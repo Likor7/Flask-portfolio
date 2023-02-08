@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Companies</h1>
+    <hr>
+    {% if companies %}
+    <div class="row">
+        {% for company in companies %}
+            <div class="card m-3 col-md-3">
+                <div class="card-body">
+                    <h4 class="card-title">{{ company.title }}</h4>
+                    <p class="card-text">{{ company.location }}</p>
+                    <div class="d-flex justify-content-start">
+                        <a href="{{ url_for('company.company_profile', id=company.id) }}" class="card-link">Profile</a>
+                        <a href="{{ url_for('company.company_deletion', id=company.id) }}" class="card-link">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p class="text-center pt-100 text-muted">There is no companys yet.</p>
+    {% endif %}
+    <hr>
+    <div class="d-flex flex-column text-center">
+        <p class="text-secondary">Want to create a company? Press the button below.</p>
+        <a class="btn btn-primary" href="{{ url_for('company.company_creation') }}" role="button">Create Company</a>
+    </div>
+
+</div>
+{% endblock %}
