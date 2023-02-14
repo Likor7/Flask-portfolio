@@ -9,5 +9,8 @@ from .company import (
     CompanyCreationForm,
     CompanyForm
 )
-from .employee import AddEmployeeForm
+from .employee import (
+    AddEmployeeForm,
+    EmployeeForm,
+)                      
 from .upload import UploadForm

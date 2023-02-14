@@ -9,8 +9,8 @@ class Company(db.Model, ModelMixin):
     title = db.Column(db.String(100), nullable=False)
     location = db.Column(db.String(100), nullable=False)
     
-    employees = db.relationship("Employee", back_populates="company")
-
+    employees = db.relationship('Employee', backref='companies', passive_deletes='all')
+    
     def __repr__(self):
         return "<Company(title='%s', location='%s')>" % (
             self.title,

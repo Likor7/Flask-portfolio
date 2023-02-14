@@ -31,7 +31,7 @@ def company_profile(id):
     elif request.method == "GET":
         form.title.data = company.title
         form.location.data = company.location
-    return render_template("company/company_profile.html", form=form, company_id=company.id)
+    return render_template("company/company_creation_profile.html", form=form, company_id=company.id)
 
 
 @company_blueprint.route("/company/creation", methods=["GET", "POST"])
@@ -48,12 +48,12 @@ def company_creation():
         return redirect(url_for("company.companies"))
     elif form.is_submitted():
         flash("The given data was invalid.", "danger")
-    return render_template("company/company_creation.html", form=form)
+    return render_template("company/company_creation_profile.html", form=form)
 
 
 @company_blueprint.route("/company/deletion/<int:id>")
 @login_required
 def company_deletion(id):
-    company = Company.query.get(id)
+    company: Company = Company.query.get(id)
     company.delete()
-    return redirect("/companies")
+    return redirect(url_for('company.companies'))

@@ -1,6 +1,10 @@
-# Python classes practice
+# Flask portfolio by Oleh Skupeiko
 
 ## Local setup
+
+### If you use poetry 
+
+****
 
 **Create python environment**
 

@@ -18,3 +18,7 @@ class CompanyForm(FlaskForm):
     title = StringField('Title', [DataRequired(), Length(min=4, max=100)])
     location = StringField('Location', [DataRequired(), Length(min=4, max=100)])
     submit = SubmitField("Save")
+    
+    def validate_title(form, field):
+        if Company.query.filter_by(title=field.data).first():
+            raise ValidationError('This title is taken.')

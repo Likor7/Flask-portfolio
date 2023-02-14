@@ -4,11 +4,10 @@
 <div class="container py-4">
   <div class="card w-50 mx-auto">
     <div class="card-header">
-      <h4 class="card-title">Company</h4>
+      <h4 class="card-title">Company{% if not company_id %} Creation{%endif%}</h4>
     </div>
     <div class="card-body">
-      <form class="form" role="form" action="{{ url_for('company.company_profile', id=company_id) }}" method="post">
-        {{ form.hidden_tag() }}
+      <form class="form" role="form" {% if company_id %} action="{{ url_for('company.company_profile', id=company_id) }}" {% else %} action="{{ url_for('company.company_creation') }}" {% endif %} method="post">
         <div class="form-group">
           {{form.title.label}}
           {{form.title(class='form-control')}}
@@ -23,6 +22,7 @@
             <small class="text-danger">{{error}}</small>
           {% endfor %}
         </div>
+
         {{form.submit(class='btn btn-primary')}}
       </form>
     </div>
