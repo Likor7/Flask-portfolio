@@ -7,6 +7,7 @@ employee_blueprint = Blueprint("employee", __name__)
 
 
 @employee_blueprint.route("/employees", methods=["GET"])
+@login_required
 def employees():
     employees = Employee.query.all()
     return render_template("employee/employees.html", employees=employees)

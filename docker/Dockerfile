@@ -18,15 +18,9 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK on
 # Keeps Poetry from automatically creates virtual environments
 ENV POETRY_VIRTUALENVS_CREATE false
 
-# Install poetry
-RUN curl -sSL https://install.python-poetry.org | python3 -
-ENV PATH="${PATH}:/root/.local/bin"
-RUN poetry self update
-
-# Install dependencies
-COPY pyproject.toml .
-COPY poetry.lock .
-RUN poetry install --only main --no-interaction --no-ansi
+# Install the project requirements
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 # Copy project
 COPY . .

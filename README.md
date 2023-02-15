@@ -1,8 +1,10 @@
 # Flask portfolio by Oleh Skupeiko
 
-## Local setup
+## Setup instruction
 
-### If you use poetry 
+****
+
+### Local setup 
 
 ****
 
@@ -42,8 +44,12 @@ $ flask db migrate
 $ flask run
 ```
 
-## Setup with docker
+****
+
+### Setup with docker
+
+****
 
 ```
-$ docker-compose up -d --build
+$ sudo docker-compose up -d --build
 ```
